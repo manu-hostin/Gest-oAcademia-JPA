@@ -6,28 +6,40 @@ import com.weg.gestao_academia.DTO.produtoSuplemento.ProdutoSuplementoRequisicao
 import com.weg.gestao_academia.DTO.produtoSuplemento.ProdutoSuplementoResposta;
 import com.weg.gestao_academia.model.Aula;
 import com.weg.gestao_academia.model.ProdutoSuplemento;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+@Component
 public class ProdutoSuplementoMapper {
 
-    public static ProdutoSuplemento paraEntidade (ProdutoSuplementoRequisicao dto) {
-        ProdutoSuplemento prod = new ProdutoSuplemento();
+        public ProdutoSuplemento paraEntidade (ProdutoSuplementoRequisicao dto) {
+            ProdutoSuplemento prod = new ProdutoSuplemento();
 
-        prod.setMarca(dto.getMarca());
-        prod.setNome(dto.getNome());
-        prod.setPreco(dto.getPreco());
-        prod.setQuantidadeEstoque(dto.getQuantidadeEstoque());
+            prod.setMarca(dto.marca());
+            prod.setNome(dto.nome());
+            prod.setPreco(dto.preco());
+            prod.setQuantidadeEstoque(dto.quantidadeEstoque());
 
-        return prod;
+            return prod;
+        }
+        public ProdutoSuplementoResposta paraResposta (ProdutoSuplemento prod){
+            return new ProdutoSuplementoResposta(
+
+                    prod.getId(),
+                    prod.getNome(),
+                    prod.getMarca(),
+                    prod.getPreco(),
+                    prod.getQuantidadeEstoque()
+            );
+        }
+
+        public List<ProdutoSuplementoResposta> paraListar(List<ProdutoSuplemento> produtoSuplementos) {
+            List<ProdutoSuplementoResposta> lista = new ArrayList<>();
+
+            for (ProdutoSuplemento produtoSuplemento : produtoSuplementos){
+                lista.add(paraResposta(produtoSuplemento));
+            }
+            return lista;
+        }
     }
-    public static ProdutoSuplementoResposta paraResposta (ProdutoSuplemento produtoSuplemento){
-        ProdutoSuplementoResposta resposta = new ProdutoSuplementoResposta();
-
-        resposta.setId(produtoSuplemento.getId());
-        resposta.setNome(produtoSuplemento.getNome());
-        resposta.setMarca(produtoSuplemento.getMarca());
-        resposta.setPreco(produtoSuplemento.getPreco());
-        resposta.setQuantidadeEstoque(produtoSuplemento.getQuantidadeEstoque());
-
-        return resposta;
-    }
-}

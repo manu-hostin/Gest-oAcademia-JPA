@@ -3,17 +3,15 @@ package com.weg.gestao_academia.DTO.produtoSuplemento;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class ProdutoSuplementoResposta {
+public record ProdutoSuplementoResposta (
 
-    private int id;
+    int id,
 
-    private String nome;
+    String nome,
 
-    private String marca;
+    String marca,
 
-    private Double preco;
+    Double preco,
 
-    private int quantidadeEstoque;
-}
+    int quantidadeEstoque
+){}
