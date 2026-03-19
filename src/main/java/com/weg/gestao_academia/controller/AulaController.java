@@ -3,6 +3,7 @@ package com.weg.gestao_academia.controller;
 import com.weg.gestao_academia.DTO.aula.AulaRequisicao;
 import com.weg.gestao_academia.DTO.aula.AulaResposta;
 import com.weg.gestao_academia.service.AulaService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class AulaController {
     private final AulaService service;
 
     @PostMapping("/cadastrar")
-    public AulaResposta cadastrarAula (@RequestBody AulaRequisicao requisicao) {
+    public AulaResposta cadastrarAula (@Valid @RequestBody AulaRequisicao requisicao) {
         return service.criarAula(requisicao);
     }
 

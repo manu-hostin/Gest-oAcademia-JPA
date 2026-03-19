@@ -6,6 +6,7 @@ import com.weg.gestao_academia.DTO.produtoSuplemento.ProdutoSuplementoRequisicao
 import com.weg.gestao_academia.DTO.produtoSuplemento.ProdutoSuplementoResposta;
 import com.weg.gestao_academia.service.InstrutorService;
 import com.weg.gestao_academia.service.ProdutoSuplementoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class ProdutoSuplementoController {
     private final ProdutoSuplementoService service;
 
     @PostMapping("/cadastrar")
-    public ProdutoSuplementoResposta cadastrarProdutoSuplemento (@RequestBody ProdutoSuplementoRequisicao requisicao) {
+    public ProdutoSuplementoResposta cadastrarProdutoSuplemento (@Valid @RequestBody ProdutoSuplementoRequisicao requisicao) {
         return service.criarProdutoSuplemento(requisicao);
     }
 

@@ -4,6 +4,7 @@ import com.weg.gestao_academia.DTO.aluno.AlunoRequisicao;
 import com.weg.gestao_academia.DTO.aluno.AlunoResposta;
 import com.weg.gestao_academia.model.Aluno;
 import com.weg.gestao_academia.service.AlunoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class AlunoController {
     private final AlunoService service;
 
     @PostMapping("/cadastrar")
-    public AlunoResposta cadastrarAluno (@RequestBody AlunoRequisicao requisicao) {
+    public AlunoResposta cadastrarAluno (@Valid @RequestBody AlunoRequisicao requisicao) {
         return service.criarAluno(requisicao);
     }
 

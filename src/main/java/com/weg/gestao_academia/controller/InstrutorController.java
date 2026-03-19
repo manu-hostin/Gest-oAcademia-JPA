@@ -3,6 +3,7 @@ package com.weg.gestao_academia.controller;
 import com.weg.gestao_academia.DTO.instrutor.InstrutorRequisicao;
 import com.weg.gestao_academia.DTO.instrutor.InstrutorResposta;
 import com.weg.gestao_academia.service.InstrutorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class InstrutorController {
     private final InstrutorService service;
 
     @PostMapping("/cadastrar")
-    public InstrutorResposta cadastrarInstrutor (@RequestBody InstrutorRequisicao requisicao) {
+    public InstrutorResposta cadastrarInstrutor (@Valid @RequestBody InstrutorRequisicao requisicao) {
         return service.criarInstrutor(requisicao);
     }
 
