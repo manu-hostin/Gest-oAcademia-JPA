@@ -28,6 +28,10 @@ public class AlunoController {
         return service.listarAlunos();
     }
 
+    @GetMapping("/listar/planos")
+    public List<AlunoResposta> buscarPlanos (@RequestBody List<String> planos) {
+        return service.buscarPorPlano(planos);
+    }
     @GetMapping("/listar/{id}")
     public AlunoResposta buscarAlunoId (@PathVariable int id) {
         return service.buscarAlunoId(id);

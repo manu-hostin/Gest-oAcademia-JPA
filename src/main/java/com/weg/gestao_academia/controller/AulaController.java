@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,11 @@ public class AulaController {
     @GetMapping("/listar/{id}")
     public AulaResposta buscarPorId (@PathVariable int id) {
         return service.buscarPorId(id);
+    }
+
+    @GetMapping("/listar/nivel")
+    public List<AulaResposta> listarAulasnivel (@RequestParam String nivel) { // Tem que passar pela URL (ex.: ?nivel=INICIANTE)
+        return service.buscarAulaPorNivel(nivel);
     }
 
     @PutMapping("/atualizar/{id}")

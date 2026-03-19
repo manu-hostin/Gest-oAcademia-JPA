@@ -34,6 +34,11 @@ public class ProdutoSuplementoController {
         return service.buscarPorId(id);
     }
 
+    @GetMapping("/listar/marca/{marca}")
+    public ProdutoSuplementoResposta buscarPorMarca (@PathVariable String marca) {
+        return service.listarPorMarca(marca);
+    }
+
     @PutMapping("/atualizar/{id}")
     public ProdutoSuplementoResposta atualizarProdutoSuplemento (@PathVariable int id, @RequestBody ProdutoSuplementoRequisicao requisicao) {
         return service.atualizarProdutoSuplemento(id, requisicao);

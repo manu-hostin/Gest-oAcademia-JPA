@@ -1,13 +1,16 @@
 package com.weg.gestao_academia.service;
 
+import com.weg.gestao_academia.DTO.aluno.AlunoResposta;
 import com.weg.gestao_academia.DTO.aula.AulaRequisicao;
 import com.weg.gestao_academia.DTO.aula.AulaResposta;
 import com.weg.gestao_academia.mapper.AulaMapper;
+import com.weg.gestao_academia.model.Aluno;
 import com.weg.gestao_academia.model.Aula;
 import com.weg.gestao_academia.repository.AulaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,6 +31,12 @@ public class AulaService {
         List<Aula> lista = repository.findAll();
         return mapper.paraListar(lista);
     }
+
+    public List<AulaResposta> buscarAulaPorNivel (String nivel) {
+        List<Aula> lista = repository.findByNivel(nivel);
+        return mapper.paraListar(lista);
+    }
+
 
     public AulaResposta buscarPorId (int id) {
         Aula aula = repository.findById(id)

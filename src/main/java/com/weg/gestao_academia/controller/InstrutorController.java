@@ -31,6 +31,11 @@ public class InstrutorController {
         return service.buscarPorId(id);
     }
 
+    @GetMapping("/listar/{turno}/{especialidade}")
+    public InstrutorResposta buscarPorTurno (@PathVariable String turno, @PathVariable String especialidade) {
+        return service.buscarTurnoEEspecialidade(turno, especialidade);
+    }
+
     @PutMapping("/atualizar/{id}")
     public InstrutorResposta atualizarInstrutor (@PathVariable int id, @RequestBody InstrutorRequisicao requisicao) {
         return service.atualizarInstrutor(id, requisicao);

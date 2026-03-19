@@ -32,6 +32,11 @@ public class EquipamentoController {
         return service.buscarEquipamento(id);
     }
 
+    @GetMapping("/listar/nome/{nome}")
+    public EquipamentoResposta buscarPorNome (@PathVariable String nome) {
+        return service.buscarEquipamentoNome(nome);
+    }
+
     @PutMapping("/atualizar/{id}")
     public EquipamentoResposta atualizarEquipamento (@PathVariable int id, @RequestBody EquipamentoRequisicao equipamentoRequisicao) {
         return service.atualizarEquipamento(id, equipamentoRequisicao);

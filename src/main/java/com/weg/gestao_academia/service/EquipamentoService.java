@@ -36,6 +36,10 @@ public class EquipamentoService {
         return mapper.paraResposta(eq);
     }
 
+    public EquipamentoResposta buscarEquipamentoNome (String nome) {
+        return mapper.paraResposta(repository.findByNome(nome));
+    }
+
     public void deletarEquipamento (int id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Equipamento não existe");

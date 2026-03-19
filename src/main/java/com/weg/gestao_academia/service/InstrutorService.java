@@ -37,6 +37,11 @@ public class InstrutorService {
         return mapper.paraResposta(instrutor);
     }
 
+    public InstrutorResposta buscarTurnoEEspecialidade (String turno, String especialidade) {
+        Instrutor instrutor = repository.findByTurnoAndEspecialidade(turno, especialidade);
+        return mapper.paraResposta(instrutor);
+    }
+
     public void deletarInstrutor (int id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Usuário não existe!");

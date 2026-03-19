@@ -33,6 +33,18 @@ public class AlunoService {
         return respostas; // Ele precisa retornar uma lista do tipo AlunoResposta, pq nós cadastramos assim
     }
 
+    public List<AlunoResposta> buscarPorPlano(List<String> planos) {
+        List<Aluno> lista = repository.findByPlanoIn(planos);
+        List<AlunoResposta> respostas = new ArrayList<>();
+
+        for (Aluno aluno : lista) {
+            respostas.add(AlunoMapper.paraResposta(aluno));
+        }
+
+        return respostas;
+    }
+
+
     public AlunoResposta buscarAlunoId (int id) {
         Aluno aluno = repository.findById(id) // Retorna um aluno, então precisamos converter com o mapper
                 .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));

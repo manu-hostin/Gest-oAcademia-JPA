@@ -29,6 +29,11 @@ public class ProdutoSuplementoService {
             return mapper.paraListar(lista);
         }
 
+        public ProdutoSuplementoResposta listarPorMarca (String marca) {
+            ProdutoSuplemento prod = repository.findByMarca(marca);
+            return mapper.paraResposta(prod);
+        }
+
         public ProdutoSuplementoResposta buscarPorId (int id) {
             ProdutoSuplemento produtoSuplemento = repository.findById(id)
                     .orElseThrow(() -> new RuntimeException("Produto/Suplemento não cadastrado."));
