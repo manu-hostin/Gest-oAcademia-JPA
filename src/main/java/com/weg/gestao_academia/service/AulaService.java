@@ -31,7 +31,7 @@ public class AulaService {
 
     public AulaResposta buscarPorId (int id) {
         Aula aula = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Aula não cadastrado."));
+                .orElseThrow(() -> new RuntimeException("Aula não cadastrada."));
 
         return mapper.paraResposta(aula);
     }
@@ -43,7 +43,7 @@ public class AulaService {
         repository.deleteById(id);
     }
 
-    public AulaResposta atualizarInstrutor (int id, AulaRequisicao requisicao){
+    public AulaResposta atualizarAula (int id, AulaRequisicao requisicao){
         Aula aula = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Aula não encontrada"));
 

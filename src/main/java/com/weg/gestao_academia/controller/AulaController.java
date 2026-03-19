@@ -16,7 +16,7 @@ public class AulaController {
     private final AulaService service;
 
     @PostMapping("/cadastrar")
-    public AulaResposta cadastrarInstrutor (@RequestBody AulaRequisicao requisicao) {
+    public AulaResposta cadastrarAula (@RequestBody AulaRequisicao requisicao) {
         return service.criarAula(requisicao);
     }
 
@@ -31,12 +31,12 @@ public class AulaController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public AulaResposta atualizarInstrutor (@PathVariable int id, @RequestBody AulaRequisicao requisicao) {
-        return service.atualizarInstrutor(id, requisicao);
+    public AulaResposta atualizarAula (@PathVariable int id, @RequestBody AulaRequisicao requisicao) {
+        return service.atualizarAula(id, requisicao);
     }
 
     @DeleteMapping("/deletar/{id}")
-    public void deletarInstrutor (@PathVariable int id) {
+    public void deletarAula (@PathVariable int id) {
         service.deletarAula(id);
     }
 

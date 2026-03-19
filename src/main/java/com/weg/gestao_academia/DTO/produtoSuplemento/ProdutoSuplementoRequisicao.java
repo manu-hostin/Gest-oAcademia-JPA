@@ -10,13 +10,13 @@ import lombok.Setter;
 
 public record ProdutoSuplementoRequisicao (
 
-        @NotBlank(message = "Digite o seu nome")
+        @NotBlank(message = "Digite o nome do produto ou suplemento")
         String nome,
         @NotBlank(message = "Digite a marca")
         String marca,
         @PositiveOrZero(message = "Digite o preço")
         Double preco,
 
-        @PositiveOrZero
+        @PositiveOrZero(message = "A quantidade deve ser 0 ou positiva")
         int quantidadeEstoque
 ){}

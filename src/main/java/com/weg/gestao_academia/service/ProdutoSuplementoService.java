@@ -45,7 +45,7 @@ public class ProdutoSuplementoService {
 
         public ProdutoSuplementoResposta atualizarProdutoSuplemento (int id, ProdutoSuplementoRequisicao requisicao){
             ProdutoSuplemento produtoSuplemento = repository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Instrutor não encontrado"));
+                    .orElseThrow(() -> new RuntimeException("Produto/Suplemento não encontrado"));
 
             produtoSuplemento.setNome(requisicao.nome());
             produtoSuplemento.setQuantidadeEstoque(requisicao.quantidadeEstoque());
